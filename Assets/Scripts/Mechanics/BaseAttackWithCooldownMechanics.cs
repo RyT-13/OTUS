@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace Mechanics
 {
-    public class AttackMechanics : MonoBehaviour
+    public abstract class BaseAttackWithCooldownMechanics : MonoBehaviour
     {
         [SerializeField] private EventReceiver _attackReceiver;
         [SerializeField] private TimerBehaviour _countdown;
         [SerializeField] private IntBehaviour _damage;
 
-        [Space] [SerializeField] private Enemy _enemy;
+        protected abstract void OnAttack(int damage);
 
         private void OnEnable()
         {
@@ -28,7 +28,7 @@ namespace Mechanics
                 return;
             }
             
-            _enemy.TakeDamage(_damage.Value);
+            OnAttack(_damage.Value);
             
             _countdown.ResetTime();
             _countdown.Play();
