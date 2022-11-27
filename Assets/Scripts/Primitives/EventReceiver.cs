@@ -4,15 +4,14 @@ using UnityEngine;
 
 namespace Primitives
 {
-        public class EventReceiver : MonoBehaviour
-        {
-                public event Action EventCalled;
+    public class EventReceiver : MonoBehaviour
+    {
+        public event Action EventCalled;
 
-                [Button]
-                public void Call()
-                {
-                        Debug.Log($"Event {name} was received...");
-                        EventCalled?.Invoke();
-                }
+        [Button]
+        public void Call()
+        {
+            EventCalled?.Invoke();
         }
+    }
 }

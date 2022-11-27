@@ -1,12 +1,12 @@
 ﻿using Mechanics;
+using Primitives;
 using UnityEngine;
 
 namespace Entities
 {
     public class Projectile : MonoBehaviour
     {
-
-        [SerializeField] private MovementMechanics _movementMechanics;
+        [SerializeField] private Vector3EventReceiver _movementReceiver;
         [SerializeField] private DestroyWithDelayMechanics _destroyMechanics;
 
         private int _damage;
@@ -23,7 +23,7 @@ namespace Entities
 
         private void Update()
         {
-            _movementMechanics.Move(transform.forward);
+            _movementReceiver.Call(transform.forward);
         }
     }
 }

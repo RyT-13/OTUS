@@ -1,22 +1,28 @@
 ﻿using Primitives;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Mechanics
 {
     public class MovementMechanics : MonoBehaviour
     {
-        [SerializeField] private Transform _movingObject;
-        
+        [SerializeField] private Vector3EventReceiver _moveReceiver;
+        [SerializeField] private MovementEngine _movementEngine;
         [SerializeField] private IntBehaviour _speed;
 
-        [Button]
-        public void Move(Vector3 direction)
+
+        private void OnEnable()
         {
-            direction.y = 0;
-            var dir = direction.normalized;
-            
-            _movingObject.position += dir * (_speed.Value * Time.deltaTime);
+            _moveReceiver.EventCalled += OnMoveRequest;
+        }
+
+        private void OnDisable()
+        {
+            _moveReceiver.EventCalled -= OnMoveRequest;
+        }
+
+        private void OnMoveRequest(Vector3 direction)
+        {
+            _movementEngine.Move(direction, _speed.Value);
         }
     }
 }

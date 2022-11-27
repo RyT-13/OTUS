@@ -1,54 +1,28 @@
-﻿using System.Collections;
-using Primitives;
-using Sirenix.OdinInspector;
+﻿using Primitives;
 using UnityEngine;
 
 namespace Mechanics
 {
     public class JumpMechanics : MonoBehaviour
     {
-        [SerializeField] private Transform _jumpingObject;
-
-        [SerializeField] private IntBehaviour _maxHeight;
+        [SerializeField] private EventReceiver _jumpReceiver;
+        [SerializeField] private JumpEngine _jumpEngine;
         [SerializeField] private IntBehaviour _speed;
+        [SerializeField] private IntBehaviour _height;
 
-        [SerializeField] private AnimationCurve _curve;
-        
-        private bool _inJump;
-
-        [Button]
-        public void Jump()
+        private void OnEnable()
         {
-            if (_inJump)
-                return;
-
-            StartCoroutine(JumpRoutine());
+            _jumpReceiver.EventCalled += OnJumpRequest;
         }
 
-        private IEnumerator JumpRoutine()
+        private void OnDisable()
         {
-            _inJump = true;
-            var progress = 0f;
-
-            while (progress < 1)
-            {
-                var height = _curve.Evaluate(progress) * _maxHeight.Value;
-                progress += _speed.Value * Time.deltaTime;
-
-                SetHeight(height);
-                
-                yield return null;
-            }
-            
-            SetHeight(0);
-            _inJump = false;
+            _jumpReceiver.EventCalled -= OnJumpRequest;
         }
 
-        private void SetHeight(float height)
+        private void OnJumpRequest()
         {
-            var currentPosition = _jumpingObject.position;
-            currentPosition.y = height;
-            _jumpingObject.position = currentPosition;
+            _jumpEngine.Jump(_speed.Value, _height.Value);
         }
     }
 }

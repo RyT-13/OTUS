@@ -595,7 +595,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 628986365}
+  - component: {fileID: 628986368}
   - component: {fileID: 628986366}
+  - component: {fileID: 628986367}
   m_Layer: 0
   m_Name: Move
   m_TagString: Untagged
@@ -632,7 +634,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movingObject: {fileID: 513358774}
+--- !u!114 &628986367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628986364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e82eb181d8c5470abc34237b93fe6d8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveReceiver: {fileID: 628986368}
+  _movementEngine: {fileID: 628986366}
   _speed: {fileID: 1078033896}
+--- !u!114 &628986368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628986364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 375a229bb7a74c5ea71f2564b1000351, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &698418250
 GameObject:
   m_ObjectHideFlags: 0
@@ -1064,7 +1092,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1033340002}
+  - component: {fileID: 1033340005}
   - component: {fileID: 1033340003}
+  - component: {fileID: 1033340004}
   m_Layer: 0
   m_Name: Jump
   m_TagString: Untagged
@@ -1102,8 +1132,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _jumpingObject: {fileID: 513358774}
-  _maxHeight: {fileID: 1093347689}
-  _speed: {fileID: 1580741327}
   _curve:
     serializedVersion: 2
     m_Curve:
@@ -1137,6 +1165,34 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1033340004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033340001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2e5c697e9e44f8eab25b01c5fdb0f63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _jumpReceiver: {fileID: 1033340005}
+  _jumpEngine: {fileID: 1033340003}
+  _speed: {fileID: 1580741327}
+  _height: {fileID: 1093347689}
+--- !u!114 &1033340005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033340001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63a69d431f5476bac0b034336d6f97b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1060096695
 GameObject:
   m_ObjectHideFlags: 0
