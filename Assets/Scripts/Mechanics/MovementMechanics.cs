@@ -1,4 +1,5 @@
-﻿using Primitives;
+﻿using Engines;
+using Primitives;
 using UnityEngine;
 
 namespace Mechanics
@@ -12,12 +13,12 @@ namespace Mechanics
 
         private void OnEnable()
         {
-            _moveReceiver.EventCalled += OnMoveRequest;
+            _moveReceiver.OnEvent += OnMoveRequest;
         }
 
         private void OnDisable()
         {
-            _moveReceiver.EventCalled -= OnMoveRequest;
+            _moveReceiver.OnEvent -= OnMoveRequest;
         }
 
         private void OnMoveRequest(Vector3 direction)

@@ -5,21 +5,24 @@ namespace Mechanics
 {
     public class DestroyWithDelayMechanics : MonoBehaviour
     {
+        [SerializeField] private EventReceiver _destructionReceiver;
         [SerializeField] private TimerBehaviour _delay;
         [SerializeField] private GameObject _destroyableObject;
 
         private void OnEnable()
         {
-            _delay.TimerEnded += OnDestroyObject;
+            _destructionReceiver.OnEvent += StartCountdown;
+            _delay.OnTimerEnded += OnDestroyObject;
         }
 
         private void OnDisable()
         {
-            _delay.TimerEnded -= OnDestroyObject;
+            _destructionReceiver.OnEvent -= StartCountdown;
+            _delay.OnTimerEnded -= OnDestroyObject;
 
         }
 
-        public void StartCountdown()
+        private void StartCountdown()
         {
             _delay.Play();
         }

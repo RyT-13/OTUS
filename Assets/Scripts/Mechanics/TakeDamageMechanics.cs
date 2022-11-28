@@ -1,5 +1,4 @@
-﻿using System;
-using Primitives;
+﻿using Primitives;
 using UnityEngine;
 
 namespace Mechanics
@@ -11,12 +10,12 @@ namespace Mechanics
 
         private void OnEnable()
         {
-            _takeDamageReceiver.EventCalled += OnDamageTaken;
+            _takeDamageReceiver.OnEvent += OnDamageTaken;
         }
 
         private void OnDisable()
         {
-            _takeDamageReceiver.EventCalled -= OnDamageTaken;
+            _takeDamageReceiver.OnEvent -= OnDamageTaken;
         }
 
         private void OnDamageTaken(int damage)

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Mechanics
+namespace Engines
 {
     public class JumpEngine : MonoBehaviour
     {
@@ -20,7 +20,6 @@ namespace Mechanics
 
         private IEnumerator JumpRoutine(int speed, int maxHeight)
         {
-           
             _inJump = true;
             var progress = 0f;
 

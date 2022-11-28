@@ -1,24 +1,27 @@
-﻿using Primitives;
+﻿using Components.Abstract;
+using Entities;
+using Primitives;
 using UnityEngine;
 
 namespace Mechanics
 {
-    public abstract class BaseAttackWithCooldownMechanics : MonoBehaviour
+    public class ShootingMechanics : MonoBehaviour
     {
         [SerializeField] private EventReceiver _attackReceiver;
         [SerializeField] private TimerBehaviour _countdown;
         [SerializeField] private IntBehaviour _damage;
-
-        protected abstract void OnAttack(int damage);
-
+        
+        [Space] [SerializeField] private Entity _projectilePref;
+        [SerializeField] private Transform _shootPoint;
+        
         private void OnEnable()
         {
-            _attackReceiver.EventCalled += OnRequestAttack;
+            _attackReceiver.OnEvent += OnRequestAttack;
         }
 
         private void OnDisable()
         {
-            _attackReceiver.EventCalled -= OnRequestAttack;
+            _attackReceiver.OnEvent -= OnRequestAttack;
         }
 
         private void OnRequestAttack()
@@ -28,7 +31,8 @@ namespace Mechanics
                 return;
             }
             
-            OnAttack(_damage.Value);
+            var projectile = Instantiate(_projectilePref, _shootPoint.position, _shootPoint.rotation);
+            projectile.Get<IDamageValueComponent>().Set(_damage.Value);
             
             _countdown.ResetTime();
             _countdown.Play();

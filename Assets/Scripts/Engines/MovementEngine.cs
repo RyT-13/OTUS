@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Mechanics
+namespace Engines
 {
     public class MovementEngine : MonoBehaviour
     {

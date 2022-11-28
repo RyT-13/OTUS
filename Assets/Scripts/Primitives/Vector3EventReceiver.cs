@@ -6,12 +6,12 @@ namespace Primitives
 {
     public class Vector3EventReceiver : MonoBehaviour
     {
-        public event Action<Vector3> EventCalled;
+        public event Action<Vector3> OnEvent;
 
         [Button]
         public void Call(Vector3 vector)
         {
-            EventCalled?.Invoke(vector);
+            OnEvent?.Invoke(vector);
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using Primitives;
+﻿using Primitives;
 using UnityEngine;
 
 namespace Mechanics
@@ -7,18 +6,16 @@ namespace Mechanics
     public class DeathMechanics : MonoBehaviour
     {
         [SerializeField] private IntBehaviour _hitPoints;
-
         [SerializeField] private EventReceiver _deathReceiver;
-
-
+        
         private void OnEnable()
         {
-            _hitPoints.ValueChanged += OnHitPointsChanged;
+            _hitPoints.OnValueChanged += OnHitPointsChanged;
         }
 
         private void OnDisable()
         {
-            _hitPoints.ValueChanged -= OnHitPointsChanged;
+            _hitPoints.OnValueChanged -= OnHitPointsChanged;
         }
 
         private void OnHitPointsChanged(int newHitPoints)

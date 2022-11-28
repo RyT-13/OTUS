@@ -1,4 +1,5 @@
-﻿using Primitives;
+﻿using Engines;
+using Primitives;
 using UnityEngine;
 
 namespace Mechanics
@@ -12,12 +13,12 @@ namespace Mechanics
 
         private void OnEnable()
         {
-            _jumpReceiver.EventCalled += OnJumpRequest;
+            _jumpReceiver.OnEvent += OnJumpRequest;
         }
 
         private void OnDisable()
         {
-            _jumpReceiver.EventCalled -= OnJumpRequest;
+            _jumpReceiver.OnEvent -= OnJumpRequest;
         }
 
         private void OnJumpRequest()

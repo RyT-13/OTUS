@@ -6,7 +6,7 @@ namespace Primitives
 {
     public class PeriodBehaviour : MonoBehaviour
     {
-        public event Action PeriodEvent;
+        public event Action OnPeriodEvent;
 
         [SerializeField] private float _period = 1.0f;
         private Coroutine _coroutine;
@@ -33,7 +33,7 @@ namespace Primitives
             while (true)
             {
                 yield return period;
-                PeriodEvent?.Invoke();
+                OnPeriodEvent?.Invoke();
             }
         }
     }

@@ -5,7 +5,7 @@ namespace Primitives
 {
     public class IntBehaviour : MonoBehaviour
     {
-        public event Action<int> ValueChanged;
+        public event Action<int> OnValueChanged;
 
         [SerializeField] private int _value;
         
@@ -15,7 +15,7 @@ namespace Primitives
             set
             {
                 _value = value;
-                ValueChanged?.Invoke(value);
+                OnValueChanged?.Invoke(value);
             }
         }
     }

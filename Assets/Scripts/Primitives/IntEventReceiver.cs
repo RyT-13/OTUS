@@ -6,12 +6,12 @@ namespace Primitives
 {
     public class IntEventReceiver : MonoBehaviour
     {
-        public event Action<int> EventCalled;
+        public event Action<int> OnEvent;
 
         [Button]
         public void Call(int value)
         {
-            EventCalled?.Invoke(value);
+            OnEvent?.Invoke(value);
         }
     }
 }

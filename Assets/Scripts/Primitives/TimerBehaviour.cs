@@ -7,7 +7,7 @@ namespace Primitives
 {
     public class TimerBehaviour : MonoBehaviour
     {
-        public event Action TimerEnded;
+        public event Action OnTimerEnded;
 
         [SerializeField] private float _duration = 3;
         [ReadOnly] [SerializeField] private float _currentTime;
@@ -49,7 +49,7 @@ namespace Primitives
             _currentTime = _duration;
             _timerCoroutine = null;
 
-            TimerEnded?.Invoke();
+            OnTimerEnded?.Invoke();
         }
     }
 }

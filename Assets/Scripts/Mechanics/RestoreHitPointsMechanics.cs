@@ -12,16 +12,16 @@ namespace Mechanics
 
         private void OnEnable()
         {
-            _takeDamageReceiver.EventCalled += OnDamageTaken;
-            _delay.TimerEnded += OnDelayEnded;
-            _restorePeriod.PeriodEvent += OnRestoreHitPoints;
+            _takeDamageReceiver.OnEvent += OnDamageTaken;
+            _delay.OnTimerEnded += OnDelayEnded;
+            _restorePeriod.OnPeriodEvent += OnRestoreHitPoints;
         }
 
         private void OnDisable()
         {
-            _takeDamageReceiver.EventCalled -= OnDamageTaken;
-            _delay.TimerEnded -= OnDelayEnded;
-            _restorePeriod.PeriodEvent -= OnRestoreHitPoints;
+            _takeDamageReceiver.OnEvent -= OnDamageTaken;
+            _delay.OnTimerEnded -= OnDelayEnded;
+            _restorePeriod.OnPeriodEvent -= OnRestoreHitPoints;
         }
 
         private void OnDamageTaken(int obj)
