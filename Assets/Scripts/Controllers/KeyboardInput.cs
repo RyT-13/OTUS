@@ -1,27 +1,33 @@
-﻿using Components.Abstract;
-using Entities;
+﻿using System;
+using GameState.Abstract;
 using UnityEngine;
 
 namespace Controllers
 {
-    public class PlayerInputController : MonoBehaviour
+    public class KeyboardInput : MonoBehaviour, IStartGameListener, IFinishGameListener
     {
-        [SerializeField] private Entity _unit;
+        public event Action<Vector3> OnMove;
+        public event Action OnJump;
+        public event Action OnShoot;
 
-        private IMoveComponent _moveComponent;
-        private IJumpComponent _jumpComponent;
-        private IShootingComponent _shootingComponent;
-        
         private void Awake()
         {
-            _moveComponent = _unit.Get<IMoveComponent>();
-            _jumpComponent = _unit.Get<IJumpComponent>();
-            _shootingComponent = _unit.Get<IShootingComponent>();
+            enabled = false;
         }
 
         private void Update()
         {
             HandleKeyboard();
+        }
+
+        void IStartGameListener.OnStartGame()
+        {
+            enabled = true;
+        }
+
+        void IFinishGameListener.OnFinishGame()
+        {
+            enabled = false;
         }
 
         private void HandleKeyboard()
@@ -47,18 +53,18 @@ namespace Controllers
         {
             if (direction != Vector3.zero)
             {
-                _moveComponent.Move(direction);
+                OnMove?.Invoke(direction);
             }
         }
 
         private void Jump()
         {
-            _jumpComponent.Jump();
+            OnJump?.Invoke();
         }
 
         private void Shoot()
         {
-            _shootingComponent.Shoot();
+            OnShoot?.Invoke();
         }
     }
 }
