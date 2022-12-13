@@ -1,4 +1,4 @@
-﻿namespace GameState.Abstract
+﻿namespace GameState.Listeners
 {
     public interface IConstructListener
     {

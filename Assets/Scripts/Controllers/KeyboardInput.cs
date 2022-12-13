@@ -1,10 +1,11 @@
 ﻿using System;
-using GameState.Abstract;
+using GameState.Listeners;
 using UnityEngine;
 
 namespace Controllers
 {
-    public class KeyboardInput : MonoBehaviour, IStartGameListener, IFinishGameListener
+    public class KeyboardInput : MonoBehaviour, 
+        IStartGameListener, IFinishGameListener, IPauseGameListener, IResumeGameListener
     {
         public event Action<Vector3> OnMove;
         public event Action OnJump;
@@ -22,10 +23,30 @@ namespace Controllers
 
         void IStartGameListener.OnStartGame()
         {
-            enabled = true;
+            TurnOnInput();
+        }
+
+        void IPauseGameListener.OnPauseGame()
+        {
+            TurnOffInput();
+        }
+
+        void IResumeGameListener.OnResumeGame()
+        {
+            TurnOnInput();
         }
 
         void IFinishGameListener.OnFinishGame()
+        {
+            TurnOffInput();
+        }
+
+        private void TurnOnInput()
+        {
+            enabled = true;
+        }
+        
+        private void TurnOffInput()
         {
             enabled = false;
         }

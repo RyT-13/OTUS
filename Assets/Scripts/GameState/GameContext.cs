@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using GameState.Abstract;
+using GameState.Listeners;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -81,6 +81,34 @@ namespace GameState
             }
 
             Debug.Log("Game started.");
+        }
+
+        [Button]
+        public void PauseGame()
+        {
+            foreach (var listener in _listeners)
+            {
+                if (listener is IPauseGameListener startListener)
+                {
+                    startListener.OnPauseGame();
+                }
+            }
+
+            Debug.Log("Game paused.");
+        }
+
+        [Button]
+        public void ResumeGame()
+        {
+            foreach (var listener in _listeners)
+            {
+                if (listener is IResumeGameListener resumeListener)
+                {
+                    resumeListener.OnResumeGame();
+                }
+            }
+
+            Debug.Log("Game resumed.");
         }
 
         [Button]
