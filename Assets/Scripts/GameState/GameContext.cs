@@ -8,8 +8,10 @@ namespace GameState
 {
     public class GameContext : MonoBehaviour
     {
+        [ShowInInspector]
         private readonly List<object> _listeners = new();
-
+        
+        [ShowInInspector]
         private readonly List<object> _services = new();
 
         #region Listeners

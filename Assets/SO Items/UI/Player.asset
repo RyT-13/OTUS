@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2394a2ca1a47cb9dd2dd0357637730, type: 3}
+  m_Name: Player
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  Name: Alexander
+  Description: Strong melee warrior!
+  Level: 1
+  MaxLevel: 10
+  HitPoints: 100
+  MaxHitPoints: 100
+  Damage: 50
