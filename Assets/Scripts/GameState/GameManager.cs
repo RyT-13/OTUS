@@ -1,4 +1,4 @@
-using Primitives;
+using Core.Primitives;
 using UnityEngine;
 
 namespace GameState

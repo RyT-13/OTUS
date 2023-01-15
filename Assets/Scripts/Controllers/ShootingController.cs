@@ -1,4 +1,4 @@
-﻿using Components.Abstract;
+﻿using Core.Components.Abstract;
 using GameState;
 using GameState.Listeners;
 using Services;

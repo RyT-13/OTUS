@@ -1,5 +1,5 @@
-﻿using Components.Abstract;
-using Entities;
+﻿using Core.Components.Abstract;
+using Core.Entities;
 using UnityEngine;
 
 namespace Controllers
