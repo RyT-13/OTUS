@@ -3,7 +3,7 @@
 namespace GameData.Character
 {
     [Serializable]
-    public struct CharacterData
+    public struct CharacterDTO
     {
         public int HitPoints;
         public int Damage;

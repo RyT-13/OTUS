@@ -156,6 +156,7 @@ MonoBehaviour:
   monoServices: []
   servicePacks:
   - {fileID: 11400000, guid: 733c3aac10ce6fe4ab41821f06e8076f, type: 2}
+  - {fileID: 11400000, guid: 18d189480ab8c554aa47c5e5b95014cf, type: 2}
 --- !u!4 &1121262826
 Transform:
   m_ObjectHideFlags: 0
@@ -203,6 +204,11 @@ MonoBehaviour:
   serviceInstaller: {fileID: 1121262825}
   _gameScene:
     m_AssetGUID: 9fc0d4010bbf28b4594072e72b8655ab
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  _uiScene:
+    m_AssetGUID: 42fb448c862375b4792f627ffdd22a23
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

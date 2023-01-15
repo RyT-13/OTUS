@@ -24,5 +24,11 @@ namespace UI.Money
             Money -= range;
             OnMoneyChange?.Invoke(Money);
         }
+
+        public void SetMoney(int money)
+        {
+            Money = money;
+            OnMoneyChange?.Invoke(Money);
+        }
     }
 }

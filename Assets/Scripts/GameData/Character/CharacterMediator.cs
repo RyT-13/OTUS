@@ -31,14 +31,14 @@ namespace GameData.Character
         public void SaveData(GameContext context)
         {
             var character = context.GetService<CharacterService>().GetCharacter();
-            var data = new CharacterData()
+            var dto = new CharacterDTO
             {
                 HitPoints = character.Get<IHitPointsValueComponent>().GetValue(),
                 Damage = character.Get<IDamageValueComponent>().GetValue(),
                 MoveSpeed = character.Get<IMoveSpeedValueComponent>().GetValue()
             };
             
-            _repository.SaveStats(data);
+            _repository.SaveStats(dto);
         }
     }
 }
