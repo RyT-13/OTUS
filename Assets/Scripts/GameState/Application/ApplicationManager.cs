@@ -18,12 +18,12 @@ namespace GameState.Application
         private ServiceInstaller serviceInstaller;
 
         [SerializeField] private AssetReference _gameScene;
-        [SerializeField] private AssetReference _uiScene;
+        // [SerializeField] private AssetReference _uiScene;
         
         private bool _applicationLoaded;
 
         private GameContext _mainGameContext;
-        private GameContext _uiGameContext;
+        // private GameContext _uiGameContext;
 
         [Button]
         public void LoadApplication()
@@ -55,13 +55,15 @@ namespace GameState.Application
             yield return operation;
             var mainScene = operation.Result.Scene;
             
-            operation = Addressables.LoadSceneAsync(_uiScene, LoadSceneMode.Additive);
-            yield return operation;
-            var uiScene = operation.Result.Scene;
+            _mainGameContext = FindObjectOfType<GameContext>();
+
+            // operation = Addressables.LoadSceneAsync(_uiScene, LoadSceneMode.Additive);
+            // yield return operation;
+            // var uiScene = operation.Result.Scene;
             
-            var gameContexts = FindObjectsOfType<GameContext>();
-            _mainGameContext = gameContexts.FirstOrDefault(g => g.gameObject.scene == mainScene);
-            _uiGameContext = gameContexts.FirstOrDefault(g => g.gameObject.scene == uiScene);
+            // var gameContexts = FindObjectsOfType<GameContext>();
+            // _mainGameContext = gameContexts.FirstOrDefault(g => g.gameObject.scene == mainScene);
+            // _uiGameContext = gameContexts.FirstOrDefault(g => g.gameObject.scene == uiScene);
         }
 
         private void LoadGameData()
@@ -69,8 +71,8 @@ namespace GameState.Application
             var characterLoader = ServiceLocator.GetService<CharacterMediator>();
             characterLoader.LoadData(_mainGameContext);
             
-            var moneyLoader = ServiceLocator.GetService<MoneyMediator>();
-            moneyLoader.LoadData(_uiGameContext);
+            // var moneyLoader = ServiceLocator.GetService<MoneyMediator>();
+            // moneyLoader.LoadData(_uiGameContext);
             
             // var dataLoaders = ServiceLocator.GetServices<IGameDataLoader>();
             // foreach (var dataLoader in dataLoaders)
@@ -84,8 +86,8 @@ namespace GameState.Application
             _mainGameContext.ConstructGame();
             _mainGameContext.StartGame();
             
-            _uiGameContext.ConstructGame();
-            _uiGameContext.StartGame();
+            // _uiGameContext.ConstructGame();
+            // _uiGameContext.StartGame();
         }
 
         private void OnApplicationPause(bool pauseStatus)
@@ -111,8 +113,8 @@ namespace GameState.Application
             var characterSaver = ServiceLocator.GetService<CharacterMediator>();
             characterSaver.SaveData(_mainGameContext);
             
-            var moneySaver = ServiceLocator.GetService<MoneyMediator>();
-            moneySaver.SaveData(_uiGameContext);
+            // var moneySaver = ServiceLocator.GetService<MoneyMediator>();
+            // moneySaver.SaveData(_uiGameContext);
             
             // var dataSavers = ServiceLocator.GetServices<IGameDataSaver>();
             // foreach (var dataSaver in dataSavers)
