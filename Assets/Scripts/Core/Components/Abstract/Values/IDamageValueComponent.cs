@@ -1,4 +1,4 @@
-﻿namespace Core.Components.Abstract
+﻿namespace Core.Components.Abstract.Values
 {
     public interface IDamageValueComponent : IValueComponent<int>
     {

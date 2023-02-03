@@ -10,12 +10,12 @@ namespace GameState
 
         private void OnEnable()
         {
-            _startGameTimer.OnTimerEnded += StartGame;
+            _startGameTimer.OnFinished += StartGame;
         }
 
         private void OnDisable()
         {
-            _startGameTimer.OnTimerEnded -= StartGame;
+            _startGameTimer.OnFinished -= StartGame;
         }
 
         private void Start()

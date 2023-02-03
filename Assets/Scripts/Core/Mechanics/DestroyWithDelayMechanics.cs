@@ -12,13 +12,13 @@ namespace Core.Mechanics
         private void OnEnable()
         {
             _destructionReceiver.OnEvent += StartCountdown;
-            _delay.OnTimerEnded += OnDestroyObject;
+            _delay.OnFinished += OnDestroyObject;
         }
 
         private void OnDisable()
         {
             _destructionReceiver.OnEvent -= StartCountdown;
-            _delay.OnTimerEnded -= OnDestroyObject;
+            _delay.OnFinished -= OnDestroyObject;
 
         }
 

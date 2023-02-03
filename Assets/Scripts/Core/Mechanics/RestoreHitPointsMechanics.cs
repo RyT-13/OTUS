@@ -13,14 +13,14 @@ namespace Core.Mechanics
         private void OnEnable()
         {
             _takeDamageReceiver.OnEvent += OnDamageTaken;
-            _delay.OnTimerEnded += OnDelayEnded;
+            _delay.OnFinished += OnDelayEnded;
             _restorePeriod.OnPeriodEvent += OnRestoreHitPoints;
         }
 
         private void OnDisable()
         {
             _takeDamageReceiver.OnEvent -= OnDamageTaken;
-            _delay.OnTimerEnded -= OnDelayEnded;
+            _delay.OnFinished -= OnDelayEnded;
             _restorePeriod.OnPeriodEvent -= OnRestoreHitPoints;
         }
 

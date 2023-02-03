@@ -7,7 +7,9 @@ namespace Core.Primitives
 {
     public class TimerBehaviour : MonoBehaviour
     {
-        public event Action OnTimerEnded;
+        public event Action OnStarted;
+        public event Action OnTimeChanged;
+        public event Action OnFinished;
 
         [SerializeField] private float _duration = 3;
         [ReadOnly] [SerializeField] private float _currentTime;
@@ -16,10 +18,14 @@ namespace Core.Primitives
 
         public bool IsPlaying => _timerCoroutine is not null;
 
+        public float Progress => _currentTime / _duration;
+
         public void Play()
         {
             if (_timerCoroutine is null)
             {
+                ResetTime();
+                OnStarted?.Invoke();
                 _timerCoroutine = StartCoroutine(TimeRoutine());
             }
         }
@@ -44,12 +50,13 @@ namespace Core.Primitives
             {
                 yield return null;
                 _currentTime += Time.deltaTime;
+                OnTimeChanged?.Invoke();
             }
 
             _currentTime = _duration;
             _timerCoroutine = null;
 
-            OnTimerEnded?.Invoke();
+            OnFinished?.Invoke();
         }
     }
 }

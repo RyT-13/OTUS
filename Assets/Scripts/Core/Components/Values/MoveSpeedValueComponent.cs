@@ -1,4 +1,4 @@
-﻿using Core.Components.Abstract;
+﻿using Core.Components.Abstract.Values;
 using Core.Primitives;
 using UnityEngine;
 
