@@ -1,15 +1,14 @@
-using Core.Primitives;
+﻿using Core.Primitives;
 using UnityEngine;
 
 namespace Core.Mechanics.GameObjects
 {
-    public class ConveyorWorkMechanics : MonoBehaviour
+    public class ConveyorDoubleWorkMechanics : MonoBehaviour
     {
-        [SerializeField]
-        private TimerBehaviour _workTimer;
+        [SerializeField] private TimerBehaviour _workTimer;
 
-        [SerializeField] private IntBehaviourLimited _inputStorage;
-
+        [SerializeField] private IntBehaviourLimited _firstInputStorage;
+        [SerializeField] private IntBehaviourLimited _secondInputStorage;
         [SerializeField] private IntBehaviourLimited _outputStorage;
 
         private void OnEnable()
@@ -32,7 +31,7 @@ namespace Core.Mechanics.GameObjects
 
         private bool CanStartWork()
         {
-            if (_inputStorage.Value <= 0)
+            if (_firstInputStorage.Value <= 0 || _secondInputStorage.Value <= 0)
             {
                 return false;
             }
@@ -52,7 +51,8 @@ namespace Core.Mechanics.GameObjects
 
         private void StartWork()
         {
-            _inputStorage.Value--;
+            _firstInputStorage.Value--;
+            _secondInputStorage.Value--;
             _workTimer.Play();
         }
 

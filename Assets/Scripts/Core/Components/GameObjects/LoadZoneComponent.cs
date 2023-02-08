@@ -1,5 +1,6 @@
 ﻿using Core.Components.Abstract.GameObjects;
 using Core.Primitives;
+using GameResources;
 using UnityEngine;
 
 namespace Core.Components.GameObjects
@@ -8,6 +9,11 @@ namespace Core.Components.GameObjects
     {
         [SerializeField]
         private IntBehaviourLimited _loadStorage;
+
+        [SerializeField]
+        private ResourceType _resourceType;
+
+        public ResourceType ResourceType => _resourceType;
 
         public bool CanLoad()
         {

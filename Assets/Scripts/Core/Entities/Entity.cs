@@ -21,6 +21,20 @@ namespace Core.Entities
             throw new Exception($"Component of type {typeof(T).Name} is not found!");
         }
 
+        public T[] GetAll<T>()
+        {
+            var result = new List<T>();
+            foreach (var component in _components)
+            {
+                if (component is T tComponent)
+                {
+                    result.Add(tComponent);
+                }
+            }
+
+            return result.ToArray();
+        }
+
         public bool TryGet<T>(out T result)
         {
             foreach (var component in _components)
